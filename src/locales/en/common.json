@@ -1,0 +1,26 @@
+
+{
+  "appName": "InicIAtiva",
+  "dashboardTitle": "My Workspaces",
+  "newWorkspace": "New Workspace",
+  "createWorkspace": "Create Workspace",
+  "workspaceTitle": "Title",
+  "workspaceDescription": "Description",
+  "workspaceContext": "Main Context",
+  "workspaceTags": "Tags",
+  "workspaceReferences": "References",
+  "generateWithAI": "Generate with AI",
+  "save": "Save",
+  "saving": "Saving...",
+  "generating": "Generating...",
+  "delete": "Delete",
+  "history": "History",
+  "noWorkspaces": "You don't have any workspaces yet.",
+  "startCreating": "Start by creating a new one!",
+  "wizardStep1": "Basic Info",
+  "wizardStep2": "Context",
+  "wizardStep3": "Details",
+  "next": "Next",
+  "previous": "Previous",
+  "finish": "Finish"
+}

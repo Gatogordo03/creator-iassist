@@ -1,0 +1,26 @@
+
+{
+  "appName": "InicIAtiva",
+  "dashboardTitle": "Mis Espacios de Trabajo",
+  "newWorkspace": "Nuevo Espacio de Trabajo",
+  "createWorkspace": "Crear Espacio de Trabajo",
+  "workspaceTitle": "Título",
+  "workspaceDescription": "Descripción",
+  "workspaceContext": "Contexto Principal",
+  "workspaceTags": "Etiquetas",
+  "workspaceReferences": "Referencias",
+  "generateWithAI": "Generar con IA",
+  "save": "Guardar",
+  "saving": "Guardando...",
+  "generating": "Generando...",
+  "delete": "Eliminar",
+  "history": "Historial",
+  "noWorkspaces": "Aún no tienes espacios de trabajo.",
+  "startCreating": "¡Empieza creando uno nuevo!",
+  "wizardStep1": "Información Básica",
+  "wizardStep2": "Contexto",
+  "wizardStep3": "Detalles",
+  "next": "Siguiente",
+  "previous": "Anterior",
+  "finish": "Finalizar"
+}

@@ -1,73 +1,65 @@
-# Welcome to your Lovable project
 
-## Project info
+# InicIAtiva
 
-**URL**: https://lovable.dev/projects/9724c3b1-4def-4410-a07f-92f1e9520189
+"InicIAtiva" es una aplicación web conceptual diseñada para ayudar a los usuarios a estructurar y desarrollar ideas utilizando asistentes de IA. Permite crear "espacios de trabajo" para cada idea, generar contenido como títulos y descripciones, y mantener un historial de desarrollo.
 
-## How can I edit this code?
+Este repositorio contiene una implementación completa del frontend con un backend simulado que se ejecuta en el navegador, demostrando el flujo de usuario, la interfaz y las interacciones.
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+"InicIAtiva" is a conceptual web application designed to help users structure and develop ideas using AI assistants. It allows creating "workspaces" for each idea, generating content such as titles and descriptions, and maintaining a development history.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/9724c3b1-4def-4410-a07f-92f1e9520189) and start prompting.
+This repository contains a full frontend implementation with a simulated backend running in the browser, demonstrating the user flow, interface, and interactions.
 
-Changes made via Lovable will be committed automatically to this repo.
+## ✨ Características / Features
 
-**Use your preferred IDE**
+-   **Gestión de Espacios de Trabajo**: Crea, visualiza y elimina espacios de trabajo para tus ideas.
+-   **Asistentes de IA (Simulados)**: Botones para generar títulos, descripciones y etiquetas basados en un contexto.
+-   **Internacionalización (i18n)**: Soporte para Español e Inglés.
+-   **Diseño Moderno**: Interfaz limpia y minimalista con Tailwind CSS.
+-   **Animaciones Fluidas**: Transiciones y microinteracciones pulidas con Framer Motion.
+-   **Persistencia Local**: Los datos se guardan en el `localStorage` del navegador.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+-   **Workspace Management**: Create, view, and delete workspaces for your ideas.
+-   **AI Assistants (Mocked)**: Buttons to generate titles, descriptions, and tags based on a context.
+-   **Internationalization (i18n)**: Support for Spanish and English.
+-   **Modern Design**: Clean and minimalist interface using Tailwind CSS.
+-   **Fluid Animations**: Polished transitions and micro-interactions with Framer Motion.
+-   **Local Persistence**: Data is saved in the browser's `localStorage`.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🛠️ Tecnologías / Tech Stack
 
-Follow these steps:
+-   **React**: Biblioteca para construir la interfaz de usuario.
+-   **Vite**: Herramienta de desarrollo frontend.
+-   **TypeScript**: Tipado estático para JavaScript.
+-   **Tailwind CSS**: Framework de CSS para diseño rápido.
+-   **Framer Motion**: Biblioteca de animación para React.
+-   **React Router**: Para el enrutamiento del lado del cliente.
+-   **i18next**: Framework de internacionalización.
+-   **TanStack Query**: Para la gestión del estado asíncrono.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🚀 Cómo Empezar / Getting Started
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Sigue estos pasos para ejecutar el proyecto localmente.
 
-# Step 3: Install the necessary dependencies.
-npm i
+Follow these steps to run the project locally.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+1.  **Clona el repositorio (si aplica) / Clone the repository (if applicable)**
+    ```bash
+    git clone <URL_DEL_REPO>
+    cd InicIAtiva
+    ```
 
-**Edit a file directly in GitHub**
+2.  **Instala las dependencias / Install dependencies**
+    ```bash
+    npm install
+    ```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+3.  **Ejecuta el servidor de desarrollo / Run the development server**
+    ```bash
+    npm run dev
+    ```
+    La aplicación estará disponible en `http://localhost:8080` (o el puerto que indique Vite).
 
-**Use GitHub Codespaces**
+    The application will be available at `http://localhost:8080` (or the port indicated by Vite).
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/9724c3b1-4def-4410-a07f-92f1e9520189) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
