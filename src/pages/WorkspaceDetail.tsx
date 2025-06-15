@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -86,7 +87,7 @@ const WorkspaceDetailPage = () => {
       animate={{ opacity: 1, y: 0 }} 
       className="max-w-7xl mx-auto px-4 pb-12"
     >
-      <header className={`flex justify-between items-center py-4 mb-6 sticky bg-background/95 backdrop-blur-sm z-30 border-b -mx-4 px-4 transition-all duration-300 ${isHeaderHidden ? 'top-0' : 'top-16'}`}>
+      <header className={`flex justify-between items-center py-4 px-6 mb-6 sticky bg-background/95 backdrop-blur-sm z-30 border rounded-lg shadow-sm transition-all duration-300 ${isHeaderHidden ? 'top-0' : 'top-16'}`}>
         <h1 className="text-2xl font-bold truncate pr-4" title={formState.title}>
           {formState.title || t('untitledWorkspace')}
         </h1>
