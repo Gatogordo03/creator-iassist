@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -13,6 +12,10 @@ import { Workspace } from '@/api/types';
 import ContextCard from './workspace-detail/ContextCard';
 import TitleCard from './workspace-detail/TitleCard';
 import DescriptionCard from './workspace-detail/DescriptionCard';
+import TagsCard from './workspace-detail/TagsCard';
+import SeoCard from './workspace-detail/SeoCard';
+import ThumbnailCard from './workspace-detail/ThumbnailCard';
+import SettingsCard from './workspace-detail/SettingsCard';
 
 const WorkspaceDetailPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -79,7 +82,7 @@ const WorkspaceDetailPage = () => {
     <motion.div 
       initial={{ opacity: 0, y: 20 }} 
       animate={{ opacity: 1, y: 0 }} 
-      className="max-w-7xl mx-auto px-4"
+      className="max-w-7xl mx-auto px-4 pb-12"
     >
       <header className="flex justify-between items-center py-4 mb-6 sticky top-0 bg-background/80 backdrop-blur-sm z-10">
         <h1 className="text-2xl font-bold truncate pr-4" title={formState.title}>
@@ -123,7 +126,33 @@ const WorkspaceDetailPage = () => {
             onUpdate={(value) => handleUpdateField('description', value)}
         />
         
-        {/* Aquí irán las otras tarjetas en el futuro */}
+        <TagsCard 
+            tags={formState.tags || []}
+            context={formState.context || ''}
+            platform={formState.platform || 'general'}
+            onUpdate={(value) => handleUpdateField('tags', value)}
+        />
+
+        <SeoCard
+            keywords={formState.seoKeywords || []}
+            context={formState.context || ''}
+            onUpdate={(value) => handleUpdateField('seoKeywords', value)}
+        />
+        
+        <SettingsCard
+            platform={formState.platform || 'general'}
+            contentType={formState.contentType || 'otro'}
+            targetAudience={formState.targetAudience || ''}
+            onUpdate={handleUpdateField}
+        />
+
+        <div className="lg:col-span-3">
+          <ThumbnailCard
+              prompt={formState.thumbnailPrompt || ''}
+              context={formState.context || ''}
+              onUpdate={(value) => handleUpdateField('thumbnailPrompt', value)}
+          />
+        </div>
       </motion.div>
     </motion.div>
   );
