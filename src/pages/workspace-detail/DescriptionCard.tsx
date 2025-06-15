@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import Spinner from "@/components/Spinner";
 import * as iaApi from '@/api/ia';
 import { Workspace } from '@/api/types';
-import { Sparkles, Copy, Check } from 'lucide-react';
+import { Sparkles, Copy, Check, X } from 'lucide-react';
 import { useTranslation } from "react-i18next";
 import { motion, Variants } from "framer-motion";
 import { useToast } from '@/hooks/use-toast';
@@ -79,7 +79,12 @@ const DescriptionCard = ({ description, context, platform, onUpdate }: Descripti
           </Button>
            {variants.length > 0 && (
             <div className="flex flex-col space-y-2 pt-2 animate-fade-in">
-              <p className="text-sm font-medium text-muted-foreground">{t('iaSuggestions')}</p>
+              <div className="flex justify-between items-center">
+                <p className="text-sm font-medium text-muted-foreground">{t('iaSuggestions')}</p>
+                <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => setVariants([])} aria-label="Descartar sugerencias">
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
               {variants.map((v, i) => (
                 <Button key={i} variant="outline" size="sm" onClick={() => handleSelectVariant(v)} className="text-left justify-start h-auto whitespace-normal">
                   {v}

@@ -81,11 +81,19 @@ const WorkspaceDetailPage = () => {
     },
   };
 
+  const platformAccentColors: Record<Workspace['platform'], string> = {
+    youtube: '0 70% 60%', // Soft Red
+    tiktok: '262.1 83.3% 57.8%',
+    general: '262.1 83.3% 57.8%',
+  };
+  const accentColor = platformAccentColors[formState.platform || 'general'];
+
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }} 
       animate={{ opacity: 1, y: 0 }} 
       className="max-w-7xl mx-auto px-4 pb-12"
+      style={{ '--accent': accentColor } as React.CSSProperties}
     >
       <header className={`flex justify-between items-center py-4 px-6 mb-6 sticky bg-background/95 backdrop-blur-sm z-30 border rounded-lg shadow-sm transition-all duration-300 ${isHeaderHidden ? 'top-0' : 'top-16'}`}>
         <h1 className="text-2xl font-bold truncate pr-4" title={formState.title}>
