@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,10 +8,12 @@ import { Sparkles, Download, Copy, Check, X } from 'lucide-react';
 import { useTranslation } from "react-i18next";
 import { motion, Variants } from "framer-motion";
 import { useToast } from '@/hooks/use-toast';
+import { Workspace } from '@/api/types';
 
 interface ThumbnailCardProps {
   prompt: string;
   context: string;
+  platform: Workspace['platform'];
   onUpdate: (value: string) => void;
 }
 
@@ -21,7 +22,7 @@ const cardVariants: Variants = {
   show: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 100 } },
 };
 
-const ThumbnailCard = ({ prompt, context, onUpdate }: ThumbnailCardProps) => {
+const ThumbnailCard = ({ prompt, context, platform, onUpdate }: ThumbnailCardProps) => {
   const { t } = useTranslation();
   const [isGenerating, setIsGenerating] = useState(false);
   const [variants, setVariants] = useState<string[]>([]);
@@ -52,6 +53,8 @@ const ThumbnailCard = ({ prompt, context, onUpdate }: ThumbnailCardProps) => {
     }
   };
 
+  const isVertical = platform === 'tiktok' || platform === 'instagram';
+
   return (
     <motion.div variants={cardVariants}>
       <Card className="hover:border-accent transition-colors duration-300">
@@ -67,7 +70,7 @@ const ThumbnailCard = ({ prompt, context, onUpdate }: ThumbnailCardProps) => {
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
-           <div className="aspect-video w-full bg-slate-100 dark:bg-slate-800 rounded-md flex items-center justify-center border">
+           <div className={`w-full bg-slate-100 dark:bg-slate-800 rounded-md flex items-center justify-center border ${isVertical ? 'aspect-[9/16]' : 'aspect-video'}`}>
               <img src="/placeholder.svg" alt="Thumbnail placeholder" className="h-24 w-24 opacity-20" />
            </div>
           <Textarea

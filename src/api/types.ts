@@ -1,4 +1,3 @@
-
 export interface Workspace {
   id: string;
   title: string;
@@ -9,7 +8,7 @@ export interface Workspace {
   createdAt: string;
 
   // Nuevos campos para creadores:
-  platform: 'youtube' | 'tiktok' | 'general';
+  platform: 'youtube' | 'tiktok' | 'instagram' | 'general';
   contentType: 'review' | 'tutorial' | 'gaming' | 'vlog' | 'unboxing' | 'otro';
   thumbnailPrompt: string;
   seoKeywords: string[];

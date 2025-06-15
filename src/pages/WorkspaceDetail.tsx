@@ -84,6 +84,7 @@ const WorkspaceDetailPage = () => {
   const platformAccentColors: Record<Workspace['platform'], string> = {
     youtube: '0 70% 60%', // Soft Red
     tiktok: '262.1 83.3% 57.8%',
+    instagram: '327 90% 58%', // Vibrant Pink
     general: '262.1 83.3% 57.8%',
   };
   const accentColor = platformAccentColors[formState.platform || 'general'];
@@ -161,6 +162,7 @@ const WorkspaceDetailPage = () => {
           <ThumbnailCard
               prompt={formState.thumbnailPrompt || ''}
               context={formState.context || ''}
+              platform={formState.platform || 'general'}
               onUpdate={(value) => handleUpdateField('thumbnailPrompt', value)}
           />
         </div>

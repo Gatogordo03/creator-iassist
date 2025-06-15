@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Workspace } from '@/api/types';
-import { ArrowRight, Youtube, Film } from 'lucide-react';
+import { ArrowRight, Youtube, Film, Instagram } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const platformConfig: Record<Workspace['platform'], { icon: React.ElementType; style: string; textColor: string; }> = {
@@ -15,6 +15,11 @@ const platformConfig: Record<Workspace['platform'], { icon: React.ElementType; s
         icon: Film, // Usando film como sustituto para TikTok
         style: 'border-purple-200 hover:border-purple-400',
         textColor: 'text-purple-500',
+    },
+    instagram: {
+        icon: Instagram,
+        style: 'border-pink-200 hover:border-pink-400',
+        textColor: 'text-pink-500',
     },
     general: {
         icon: Film,

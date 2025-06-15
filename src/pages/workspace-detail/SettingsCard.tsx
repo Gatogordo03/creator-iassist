@@ -22,7 +22,7 @@ const cardVariants: Variants = {
 const SettingsCard = ({ platform, contentType, targetAudience, onUpdate }: SettingsCardProps) => {
   const { t } = useTranslation();
   
-  const platformOptions: Workspace['platform'][] = ['youtube', 'tiktok', 'general'];
+  const platformOptions: Workspace['platform'][] = ['youtube', 'tiktok', 'instagram', 'general'];
   const contentTypeOptions: Workspace['contentType'][] = ['review', 'tutorial', 'gaming', 'vlog', 'unboxing', 'otro'];
 
   return (
