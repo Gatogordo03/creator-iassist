@@ -32,7 +32,19 @@ const NewWorkspacePage = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!title) return;
-    mutation.mutate({ title, description, context, tags: [], references: [] });
+    mutation.mutate({
+      title,
+      description,
+      context,
+      tags: [],
+      references: [],
+      // Valores por defecto para la nueva estructura
+      platform: 'general',
+      contentType: 'otro',
+      thumbnailPrompt: '',
+      seoKeywords: [],
+      targetAudience: '',
+    });
   };
 
   return (

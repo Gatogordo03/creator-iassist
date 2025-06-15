@@ -7,6 +7,13 @@ export interface Workspace {
   references: string[];
   context: string;
   createdAt: string;
+
+  // Nuevos campos para creadores:
+  platform: 'youtube' | 'tiktok' | 'general';
+  contentType: 'review' | 'tutorial' | 'gaming' | 'vlog' | 'unboxing' | 'otro';
+  thumbnailPrompt: string;
+  seoKeywords: string[];
+  targetAudience: string;
 }
 
 export interface HistoryEntry {
