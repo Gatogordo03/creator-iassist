@@ -5,6 +5,7 @@ import LocaleSwitcher from './LocaleSwitcher';
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { useHeader } from '@/contexts/HeaderContext';
+import UserProfile from './UserProfile';
 
 const Header = () => {
   const { t } = useTranslation('common');
@@ -35,7 +36,10 @@ const Header = () => {
           <BrainCircuit className="text-accent" />
           <span>{t('appName')}</span>
         </Link>
-        <LocaleSwitcher />
+        <div className="flex items-center gap-2">
+            <LocaleSwitcher />
+            <UserProfile />
+        </div>
       </div>
     </motion.header>
   );

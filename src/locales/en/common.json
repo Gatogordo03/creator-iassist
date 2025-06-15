@@ -68,5 +68,19 @@
   "targetAudiencePlaceholder": "Describe your target audience...",
   "workspaceNotFound": "Workspace not found.",
   "untitledWorkspace": "Untitled Workspace",
-  "saved": "Saved!"
+  "saved": "Saved!",
+  "profile": {
+    "title": "Profile",
+    "personal": "Personal Profile",
+    "account": "Account & Security",
+    "notifications": "Notifications",
+    "appearance": "Appearance",
+    "language": "Language",
+    "aiSettings": "AI Settings",
+    "activity": "My Activity",
+    "privacy": "Data & Privacy",
+    "help": "Help & Support",
+    "about": "About",
+    "logout": "Logout"
+  }
 }

@@ -7,7 +7,7 @@ const LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, se
 
 const extractKeywords = (text: string, num: number = 5): string[] => {
     if (!text.trim()) return [];
-    const words = text.toLowerCase().match(/\b(\w{4,})\b/g) || [];
+    const words: string[] = text.toLowerCase().match(/\b(\w{4,})\b/g) || [];
     const freq = words.reduce((acc: Record<string, number>, word) => {
         acc[word] = (acc[word] || 0) + 1;
         return acc;
