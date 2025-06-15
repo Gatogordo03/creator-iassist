@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -8,6 +7,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Loader, Trash2, CheckCircle, Save } from 'lucide-react';
 import { Workspace } from '@/api/types';
+import { useHeader } from '@/contexts/HeaderContext';
 
 // Import new card components
 import ContextCard from './workspace-detail/ContextCard';
@@ -23,6 +23,7 @@ const WorkspaceDetailPage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation('common');
   const queryClient = useQueryClient();
+  const { isHeaderHidden } = useHeader();
 
   const [formState, setFormState] = useState<Partial<Workspace>>({});
   const [isSaving, setIsSaving] = useState(false);
@@ -85,7 +86,7 @@ const WorkspaceDetailPage = () => {
       animate={{ opacity: 1, y: 0 }} 
       className="max-w-7xl mx-auto px-4 pb-12"
     >
-      <header className="flex justify-between items-center py-4 mb-6 sticky top-16 bg-background/95 backdrop-blur-sm z-30 border-b -mx-4 px-4">
+      <header className={`flex justify-between items-center py-4 mb-6 sticky bg-background/95 backdrop-blur-sm z-30 border-b -mx-4 px-4 transition-all duration-300 ${isHeaderHidden ? 'top-0' : 'top-16'}`}>
         <h1 className="text-2xl font-bold truncate pr-4" title={formState.title}>
           {formState.title || t('untitledWorkspace')}
         </h1>
