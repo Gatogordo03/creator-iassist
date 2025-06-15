@@ -63,14 +63,35 @@ const WorkspaceDetailPage = () => {
     updateMutation.mutate(formState);
   };
   
-  const handleGenerate = async (field: 'title' | 'description' | 'tags') => {
+  const handleGenerate = async (field: 'title' | 'description' | 'tags' | 'thumbnailPrompt' | 'seoKeywords') => {
     setAiLoading(field);
     try {
-      let result;
+      let result: any;
       const context = formState.context || '';
-      if (field === 'title') result = await iaApi.generateTitle(context);
-      if (field === 'description') result = await iaApi.generateDescription(context);
-      if (field === 'tags') result = await iaApi.generateTags(context);
+      const platform = formState.platform || 'general';
+
+      switch (field) {
+        case 'title':
+          const titles = await iaApi.generateTitle(context, platform);
+          result = titles[0] || ''; // Pick first
+          break;
+        case 'description':
+          const descriptions = await iaApi.generateDescription(context, platform);
+          result = descriptions[0] || ''; // Pick first
+          break;
+        case 'tags':
+          result = await iaApi.generateTags(context, platform);
+          break;
+        case 'thumbnailPrompt':
+            const prompts = await iaApi.generateThumbnailPrompt(context);
+            result = prompts[0] || ''; // Pick first
+            break;
+        case 'seoKeywords':
+            result = await iaApi.generateSeoKeywords(context);
+            break;
+        default:
+          break;
+      }
       
       setFormState(prev => ({ ...prev, [field]: result }));
     } finally {
