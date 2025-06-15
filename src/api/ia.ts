@@ -1,3 +1,4 @@
+
 import { Workspace } from "./types";
 
 // NOTE: This is a mock AI API.
@@ -8,7 +9,7 @@ const simulateProcessing = (ms: number = 800) => new Promise(res => setTimeout(r
 const extractKeywords = (text: string, num: number = 5): string[] => {
     if (!text.trim()) return [];
     const words = text.toLowerCase().match(/\b(\w{4,})\b/g) || [];
-    const freq = words.reduce<Record<string, number>>((acc, word) => {
+    const freq = words.reduce((acc: Record<string, number>, word) => {
         acc[word] = (acc[word] || 0) + 1;
         return acc;
     }, {});
