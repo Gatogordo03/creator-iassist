@@ -52,6 +52,7 @@
   "platforms": {
     "youtube": "YouTube",
     "tiktok": "TikTok",
+    "instagram": "Instagram",
     "general": "General"
   },
   "contentType": "Content Type",

@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
@@ -69,31 +70,35 @@ const ThumbnailCard = ({ prompt, context, platform, onUpdate }: ThumbnailCardPro
             </Button>
           </div>
         </CardHeader>
-        <CardContent className="space-y-4">
-           <div className={`w-full bg-slate-100 dark:bg-slate-800 rounded-md flex items-center justify-center border ${isVertical ? 'aspect-[9/16]' : 'aspect-video'}`}>
-              <img src="/placeholder.svg" alt="Thumbnail placeholder" className="h-24 w-24 opacity-20" />
-           </div>
-          <Textarea
-            value={prompt}
-            onChange={(e) => onUpdate(e.target.value)}
-            rows={4}
-            className="font-mono text-sm resize-none"
-            placeholder={t('workspaceThumbnailPlaceholder')}
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            <Button variant="ghost" onClick={handleGenerate} disabled={isGenerating || !context}>
-              {isGenerating ? <Spinner size="sm" /> : <Sparkles className="text-accent" />}
-              <span>{t('generatePromptWithAI')}</span>
-            </Button>
-            <Button asChild>
-              <a href="/placeholder.svg" download="thumbnail-placeholder.svg">
-                <Download />
-                <span>{t('downloadThumbnail')}</span>
-              </a>
-            </Button>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+            <div className={`w-full bg-slate-100 dark:bg-slate-800 rounded-md flex items-center justify-center border ${isVertical ? 'aspect-[9/16] max-h-[450px]' : 'aspect-video'}`}>
+                <img src="/placeholder.svg" alt="Thumbnail placeholder" className="h-24 w-24 opacity-20" />
+            </div>
+            <div className="flex flex-col space-y-4 h-full">
+              <Textarea
+                value={prompt}
+                onChange={(e) => onUpdate(e.target.value)}
+                rows={8}
+                className="font-mono text-sm resize-none flex-grow"
+                placeholder={t('workspaceThumbnailPlaceholder')}
+              />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <Button variant="ghost" onClick={handleGenerate} disabled={isGenerating || !context}>
+                  {isGenerating ? <Spinner size="sm" /> : <Sparkles className="text-accent" />}
+                  <span>{t('generatePromptWithAI')}</span>
+                </Button>
+                <Button asChild>
+                  <a href="/placeholder.svg" download="thumbnail-placeholder.svg">
+                    <Download />
+                    <span>{t('downloadThumbnail')}</span>
+                  </a>
+                </Button>
+              </div>
+            </div>
           </div>
            {variants.length > 0 && (
-            <div className="flex flex-col space-y-2 pt-2 animate-fade-in">
+            <div className="flex flex-col space-y-2 pt-4 mt-4 border-t animate-fade-in">
                <div className="flex justify-between items-center">
                 <p className="text-sm font-medium text-muted-foreground">{t('iaSuggestions')}</p>
                 <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => setVariants([])} aria-label={t('discardSuggestions')}>

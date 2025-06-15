@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Workspace } from '@/api/types';
-import { ArrowRight, Youtube, Film, Instagram } from 'lucide-react';
+import { ArrowRight, Youtube, Film, Instagram, Video } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const platformConfig: Record<Workspace['platform'], { icon: React.ElementType; style: string; textColor: string; }> = {
@@ -12,7 +12,7 @@ const platformConfig: Record<Workspace['platform'], { icon: React.ElementType; s
         textColor: 'text-red-500',
     },
     tiktok: {
-        icon: Film, // Usando film como sustituto para TikTok
+        icon: Video, // Usando Video como sustituto para TikTok
         style: 'border-purple-200 hover:border-purple-400',
         textColor: 'text-purple-500',
     },
