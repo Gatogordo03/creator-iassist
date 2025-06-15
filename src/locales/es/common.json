@@ -83,5 +83,22 @@
     "help": "Ayuda y Soporte",
     "about": "Acerca de",
     "logout": "Cerrar Sesión"
+  },
+  "helpGuide": {
+    "title": "Cómo usar InicIAtiva",
+    "description": "Tu copiloto creativo para contenido de YouTube y TikTok.",
+    "triggerTooltip": "Guía de Ayuda",
+    "step1": {
+      "title": "1. Crea un Espacio de Trabajo",
+      "description": "Haz clic en 'Nuevo Espacio de Trabajo' para iniciar un nuevo proyecto. Un espacio de trabajo contiene todas tus ideas para un único contenido."
+    },
+    "step2": {
+      "title": "2. Usa el Asistente de IA",
+      "description": "Dentro de un espacio de trabajo, usa los botones de 'Generar con IA' para obtener sugerencias de títulos, descripciones, etiquetas y más."
+    },
+    "step3": {
+      "title": "3. Refina y Guarda",
+      "description": "Edita el contenido generado, configura los ajustes y guarda tu progreso. Tu trabajo se guarda automáticamente en tu navegador."
+    }
   }
 }

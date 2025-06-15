@@ -83,5 +83,22 @@
     "help": "Help & Support",
     "about": "About",
     "logout": "Logout"
+  },
+  "helpGuide": {
+    "title": "How to use InicIAtiva",
+    "description": "Your creative co-pilot for YouTube and TikTok content.",
+    "triggerTooltip": "Help Guide",
+    "step1": {
+      "title": "1. Create a Workspace",
+      "description": "Click on 'New Workspace' to start a new project. A workspace holds all your ideas for a single piece of content."
+    },
+    "step2": {
+      "title": "2. Use the AI Assistant",
+      "description": "Inside a workspace, use the 'Generate with AI' buttons to get suggestions for titles, descriptions, tags, and more."
+    },
+    "step3": {
+      "title": "3. Refine and Save",
+      "description": "Edit the generated content, configure your settings, and save your progress. Your work is automatically saved in your browser."
+    }
   }
 }
