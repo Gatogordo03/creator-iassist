@@ -5,9 +5,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import Spinner from "@/components/Spinner";
 import * as iaApi from '@/api/ia';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Download, Copy, Check } from 'lucide-react';
 import { useTranslation } from "react-i18next";
 import { motion, Variants } from "framer-motion";
+import { useToast } from '@/hooks/use-toast';
 
 interface ThumbnailCardProps {
   prompt: string;
@@ -24,6 +25,8 @@ const ThumbnailCard = ({ prompt, context, onUpdate }: ThumbnailCardProps) => {
   const { t } = useTranslation();
   const [isGenerating, setIsGenerating] = useState(false);
   const [variants, setVariants] = useState<string[]>([]);
+  const [isCopied, setIsCopied] = useState(false);
+  const { toast } = useToast();
 
   const handleGenerate = async () => {
     setIsGenerating(true);
@@ -37,12 +40,31 @@ const ThumbnailCard = ({ prompt, context, onUpdate }: ThumbnailCardProps) => {
     setVariants([]);
   };
 
+  const handleCopy = async () => {
+    if (!prompt) return;
+    try {
+      await navigator.clipboard.writeText(prompt);
+      setIsCopied(true);
+      toast({ title: t('copiedToClipboard') });
+      setTimeout(() => setIsCopied(false), 2000);
+    } catch (err) {
+      toast({ variant: 'destructive', title: t('copyFailed') });
+    }
+  };
+
   return (
     <motion.div variants={cardVariants}>
       <Card className="hover:border-accent transition-colors duration-300">
         <CardHeader>
-          <CardTitle>{t('workspaceThumbnail')}</CardTitle>
-          <CardDescription>{t('workspaceThumbnailDescription')}</CardDescription>
+          <div className="flex justify-between items-start">
+            <div>
+              <CardTitle>{t('workspaceThumbnail')}</CardTitle>
+              <CardDescription>{t('workspaceThumbnailDescription')}</CardDescription>
+            </div>
+            <Button variant="ghost" size="icon" onClick={handleCopy} aria-label={t('copyPrompt')}>
+              {isCopied ? <Check className="text-green-500" /> : <Copy />}
+            </Button>
+          </div>
         </CardHeader>
         <CardContent className="space-y-4">
            <div className="aspect-video w-full bg-slate-100 dark:bg-slate-800 rounded-md flex items-center justify-center border">
@@ -55,10 +77,18 @@ const ThumbnailCard = ({ prompt, context, onUpdate }: ThumbnailCardProps) => {
             className="font-mono text-sm resize-none"
             placeholder={t('workspaceThumbnailPlaceholder')}
           />
-          <Button variant="ghost" onClick={handleGenerate} disabled={isGenerating || !context} className="w-full">
-            {isGenerating ? <Spinner size="sm" /> : <Sparkles className="text-accent" />}
-            <span>{t('generatePromptWithAI')}</span>
-          </Button>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <Button variant="ghost" onClick={handleGenerate} disabled={isGenerating || !context}>
+              {isGenerating ? <Spinner size="sm" /> : <Sparkles className="text-accent" />}
+              <span>{t('generatePromptWithAI')}</span>
+            </Button>
+            <Button asChild>
+              <a href="/placeholder.svg" download="thumbnail-placeholder.svg">
+                <Download />
+                <span>{t('downloadThumbnail')}</span>
+              </a>
+            </Button>
+          </div>
            {variants.length > 0 && (
             <div className="flex flex-col space-y-2 pt-2 animate-fade-in">
               <p className="text-sm font-medium text-muted-foreground">{t('iaSuggestions')}</p>

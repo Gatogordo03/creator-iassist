@@ -6,9 +6,10 @@ import { Button } from "@/components/ui/button";
 import Spinner from "@/components/Spinner";
 import * as iaApi from '@/api/ia';
 import { Workspace } from '@/api/types';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Copy, Check } from 'lucide-react';
 import { useTranslation } from "react-i18next";
 import { motion, Variants } from "framer-motion";
+import { useToast } from '@/hooks/use-toast';
 
 interface TitleCardProps {
   title: string;
@@ -26,6 +27,8 @@ const TitleCard = ({ title, context, platform, onUpdate }: TitleCardProps) => {
   const { t } = useTranslation();
   const [isGenerating, setIsGenerating] = useState(false);
   const [variants, setVariants] = useState<string[]>([]);
+  const [isCopied, setIsCopied] = useState(false);
+  const { toast } = useToast();
 
   const handleGenerate = async () => {
     setIsGenerating(true);
@@ -39,11 +42,28 @@ const TitleCard = ({ title, context, platform, onUpdate }: TitleCardProps) => {
     setVariants([]);
   };
 
+  const handleCopy = async () => {
+    if (!title) return;
+    try {
+      await navigator.clipboard.writeText(title);
+      setIsCopied(true);
+      toast({ title: t('copiedToClipboard') });
+      setTimeout(() => setIsCopied(false), 2000);
+    } catch (err) {
+      toast({ variant: 'destructive', title: t('copyFailed') });
+    }
+  };
+
   return (
     <motion.div variants={cardVariants}>
       <Card className="hover:border-accent transition-colors duration-300">
         <CardHeader>
-          <CardTitle>{t('workspaceTitle')}</CardTitle>
+          <div className="flex justify-between items-center">
+            <CardTitle>{t('workspaceTitle')}</CardTitle>
+            <Button variant="ghost" size="icon" onClick={handleCopy} aria-label={t('copy')}>
+              {isCopied ? <Check className="text-green-500" /> : <Copy />}
+            </Button>
+          </div>
         </CardHeader>
         <CardContent className="space-y-4">
           <Input

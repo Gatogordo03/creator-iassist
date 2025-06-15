@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -7,9 +6,10 @@ import { Badge } from "@/components/ui/badge";
 import Spinner from "@/components/Spinner";
 import * as iaApi from '@/api/ia';
 import { Workspace } from '@/api/types';
-import { Sparkles, X, Plus } from 'lucide-react';
+import { Sparkles, X, Plus, Copy, Check } from 'lucide-react';
 import { useTranslation } from "react-i18next";
 import { motion, Variants } from "framer-motion";
+import { useToast } from '@/hooks/use-toast';
 
 interface TagsCardProps {
   tags: string[];
@@ -27,6 +27,8 @@ const TagsCard = ({ tags, context, platform, onUpdate }: TagsCardProps) => {
   const { t } = useTranslation();
   const [isGenerating, setIsGenerating] = useState(false);
   const [newTag, setNewTag] = useState('');
+  const [isCopied, setIsCopied] = useState(false);
+  const { toast } = useToast();
 
   const handleGenerate = async () => {
     setIsGenerating(true);
@@ -54,11 +56,28 @@ const TagsCard = ({ tags, context, platform, onUpdate }: TagsCardProps) => {
     }
   };
 
+  const handleCopy = async () => {
+    if (tags.length === 0) return;
+    try {
+      await navigator.clipboard.writeText(tags.join(', '));
+      setIsCopied(true);
+      toast({ title: t('copiedToClipboard') });
+      setTimeout(() => setIsCopied(false), 2000);
+    } catch (err) {
+      toast({ variant: 'destructive', title: t('copyFailed') });
+    }
+  };
+
   return (
     <motion.div variants={cardVariants}>
       <Card className="hover:border-accent transition-colors duration-300 h-full">
         <CardHeader>
-          <CardTitle>{t('workspaceTags')}</CardTitle>
+          <div className="flex justify-between items-center">
+            <CardTitle>{t('workspaceTags')}</CardTitle>
+            <Button variant="ghost" size="icon" onClick={handleCopy} aria-label={t('copyAll')}>
+              {isCopied ? <Check className="text-green-500" /> : <Copy />}
+            </Button>
+          </div>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex flex-wrap gap-2 min-h-[24px]">
