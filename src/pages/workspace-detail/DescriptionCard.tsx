@@ -81,7 +81,7 @@ const DescriptionCard = ({ description, context, platform, onUpdate }: Descripti
             <div className="flex flex-col space-y-2 pt-2 animate-fade-in">
               <div className="flex justify-between items-center">
                 <p className="text-sm font-medium text-muted-foreground">{t('iaSuggestions')}</p>
-                <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => setVariants([])} aria-label="Descartar sugerencias">
+                <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => setVariants([])} aria-label={t('discardSuggestions')}>
                   <X className="h-4 w-4" />
                 </Button>
               </div>
